@@ -2,7 +2,7 @@
 ## Introduction
   In this lab, the designer will use the k65 tower board to create a secure system that integrated different sensor inputs and output devices such as LCD display and LEDs. The system includes reading data from the touch sensor and temperature sensor. It will send out certain output to the LCD display and the LEDs if the inputs reach a certain range or triggered by the user.  
   
-	This system consists of real-time programming and the application of the co-operative kernel by using the function, SystickWaitEvent(), to create a task scheduler. Therefore, multitasking can be achieved and the CPU load can be reduced from free-running loops. When designing the program, the CPU load is the main concern for the system. Unnecessary action from the code will result in wasting CPU load which is avoided by the designer. 
+  This system consists of real-time programming and the application of the co-operative kernel by using the function, SystickWaitEvent(), to create a task scheduler. Therefore, multitasking can be achieved and the CPU load can be reduced from free-running loops. When designing the program, the CPU load is the main concern for the system. Unnecessary action from the code will result in wasting CPU load which is avoided by the designer. 
 ## Program Description
 
 SysTickWaitEvent():
