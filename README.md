@@ -17,7 +17,8 @@ ControlDisplayTask():
 
 CheckSum():
   This the memory contents from 0x00000000 to 0x0001ffff by summing up the data inside the memory. 
-SecureSystem.c:
+
+#### SecureSystem.c:
 
 SensorTask():
 	This task focuses on reading the touch sensor input data. There are two electrodes to be scanned. Since using free running loops in a scheduler isn’t a good practice, an non-blocking code is needed. Therefore, the task is switching from scanning electrode 1 and electrode 2. A software buffer is created to store the sensor data, and a flag to indicate the scanning is done is also included in this task. Later, those two public resources will be used together to determine whether the data in the buffer is valid and whether to change states. 
