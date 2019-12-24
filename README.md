@@ -42,3 +42,8 @@ PITHandler:
 AlarmWave.c:
 	DMA:
 DMA is set up to replace the PIT handler so that the CPU load can be truly reduce to zero. With a proper configuration, DMA will send the sample value from the look up table to the DAC. It is configured to be triggered by the PIT counter every 52us so that the frequency of the alarm wave will be 300Hz.  
+
+## Comments and Conclusions
+
+Since there are multiple tasks in the system, the 10ms time slice might not be enough to include all of them in a time slice. Therefore, mutual exclusion is needed. The tasks might have the same execution period, but they can be distributed into different time slice so that it is possible to run all the tasks in the scheduler. In this system, ADCTempTask, AlarmWaveControlTask, and LEDTask and ControlDisplayTask are running in different time slices. Note that LEDTask needs to be triggered immediately after ControlDisplayTask so that it won’t miss any sensor value that changes the UI states. 
+Also, since the system is running on a scheduler, it isn’t safe to have any free-running loop to occupy the CPU. As a result, when reading values from the ADC and touch sensor, two software buffers and flags are created to indicate whether the value inside the buffer is valid, so they can be properly used in the other tasks. This method reduces a huge amount of the CPU load since the conversion or scanning is done in the hardware, and the system isn’t waiting for the peripheral anymore. 
